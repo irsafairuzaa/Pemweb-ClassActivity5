@@ -8,17 +8,43 @@ let tasks = [
   }
 ];
 
+let currentFilter = "semua";
+const infoJumlah = document.querySelector("#info-jumlah");
+const filterButtons = document.querySelectorAll(".filter-controls button");
+
 const daftarTugas = document.querySelector("#daftar-tugas");
 
 function render() {
   daftarTugas.innerHTML = "";
 
-  tasks.forEach(function (task) {
+  const jumlahAktif = tasks.filter(function(task) {
+    return task.selesai === false;
+  }).length;
+  
+  if (tasks.length === 0) {
+    infoJumlah.textContent = "Belum ada tugas sama sekali";
+  } else {
+    infoJumlah.textContent = jumlahAktif + " tugas aktif";
+  }
+
+  let tasksDisaring = tasks;
+  if (currentFilter === "aktif") {
+    tasksDisaring = tasks.filter(function(task) { return !task.selesai; });
+  } else if (currentFilter === "selesai") {
+    tasksDisaring = tasks.filter(function(task) { return task.selesai; });
+  }
+
+  if (tasksDisaring.length === 0 && tasks.length > 0) {
+    daftarTugas.innerHTML = "<li style='text-align: center; color: gray;'>Tidak ada tugas di kategori ini</li>";
+    return;
+  }
+
+  tasksDisaring.forEach(function (task) {
     const li = document.createElement("li");
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
-    checkbox.className = "selesai";
+    checkbox.className = "cek-selesai";
     checkbox.checked = task.selesai;
     checkbox.dataset.id = task.id;
 
@@ -28,6 +54,11 @@ function render() {
     const spanJudul = document.createElement("span");
     spanJudul.className = "judul";
     spanJudul.textContent = task.judul;
+    
+    if (task.selesai) {
+      spanJudul.style.textDecoration = "line-through";
+      spanJudul.style.color = "gray";
+    }
 
     const smallDetail = document.createElement("small");
     smallDetail.textContent = task.matkul + " · deadline " + task.deadline;
@@ -119,4 +150,18 @@ daftarTugas.addEventListener("change", function(e) {
     
     render();
   }
+});
+
+filterButtons.forEach(function(btn) {
+  btn.addEventListener("click", function(e) {
+    filterButtons.forEach(function(b) {
+      b.classList.remove("on");
+    });
+    
+    e.target.classList.add("on");
+    
+    currentFilter = e.target.dataset.filter;
+    
+    render();
+  });
 });
