@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Tracker Kuliah</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Script dimuat dengan atribut defer -->
+  <script src="app.js" defer></script> 
+</head>
+<body>
+  <main class="container">
+    <h1>Task Tracker Kuliah</h1>
+    
+    <form id="form-tugas">
+      <input type="text" id="input-judul" placeholder="Judul tugas (min. 3 karakter)" minlength="3" required>
+      
+      <select id="select-matkul" required>
+        <option value="" disabled selected>Pilih Mata Kuliah...</option>
+        <option value="Pemrograman Web">Pemrograman Web</option>
+        <option value="Basis Data">Ethical Hacking</option>
+        <option value="Basis Data">Jaringan Komputer</option>
+      </select>
+      
+      <input type="date" id="input-tanggal" required>
+      <button type="submit" id="btn-tambah">Tambah</button>
+    </form>
+
+    <div id="pesan-error" class="error-msg"></div>
+
+    <div class="filter-controls">
+      <div class="filter-buttons">
+        <button id="filter-semua" data-filter="semua" class="on">Semua</button>
+        <button id="filter-aktif" data-filter="aktif">Aktif</button>
+        <button id="filter-selesai" data-filter="selesai">Selesai</button>
+      </div>
+      <span id="info-jumlah">0 tugas aktif</span>
+    </div>
+
+    <!-- Daftar Tugas (akan diisi oleh JS) -->
+    <ul id="daftar-tugas">
+      <!-- 
+        Struktur item yang akan di-render oleh JavaScript nanti:
+        <li>
+          <input type="checkbox" class="cek-selesai">
+          <div class="info">
+            <span class="judul">Judul Tugas</span>
+            <small>Matkul &middot; deadline tanggal</small>
+          </div>
+          <button class="btn-hapus">X</button>
+        </li>
+      -->
+    </ul>
+  </main>
+</body>
+</html>
