@@ -89,3 +89,34 @@ formTugas.addEventListener("submit", function (e) {
 
   formTugas.reset();
 });
+
+daftarTugas.addEventListener("click", function(e) {
+  const btnHapus = e.target.closest(".btn-hapus");
+  
+  if (btnHapus) {
+    const idTugas = Number(btnHapus.dataset.id); 
+    
+    tasks = tasks.filter(function(task) {
+      return task.id !== idTugas;
+    });
+    
+    render();
+  }
+});
+
+daftarTugas.addEventListener("change", function(e) {
+  const checkbox = e.target.closest(".cek-selesai");
+  
+  if (checkbox) {
+    const idTugas = Number(checkbox.dataset.id); 
+    
+    tasks = tasks.map(function(task) {
+      if (task.id === idTugas) {
+        return { ...task, selesai: checkbox.checked };
+      }
+      return task;
+    });
+    
+    render();
+  }
+});
