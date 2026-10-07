@@ -1,0 +1,132 @@
+body {
+  font-family: sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 550px;
+  margin: 40px auto;
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+#form-tugas {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+#form-tugas input, 
+#form-tugas select, 
+#form-tugas button {
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#input-judul {
+  flex: 1;
+  min-width: 140px;
+}
+
+#btn-tambah {
+  background-color: #111;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+.error-msg {
+  color: #d9534f;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.filter-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 12px;
+}
+
+.filter-buttons button {
+  padding: 6px 12px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-right: 4px;
+}
+
+.filter-buttons button.on {
+  background: #111;
+  color: white;
+  border-color: #111;
+}
+
+#info-jumlah {
+  font-size: 13px;
+  color: #666;
+}
+
+/* List Tugas */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f1f1;
+  gap: 10px;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.judul {
+  font-size: 14px;
+  color: #333;
+}
+
+.info small {
+  font-size: 12px;
+  color: #777;
+}
+
+.btn-hapus {
+  background: transparent;
+  color: #d9534f;
+  border: 1px solid #d9534f;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn-hapus:hover {
+  background: #d9534f;
+  color: white;
+}
