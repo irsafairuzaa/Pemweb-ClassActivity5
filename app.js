@@ -1,6 +1,6 @@
-let tasks = [
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [
   {
-    id: Date.now(), // ID unik
+    id: Date.now(),
     judul: "Membuat fungsi render",
     matkul: "Pemrograman Web",
     deadline: "2026-10-15",
@@ -165,3 +165,15 @@ filterButtons.forEach(function(btn) {
     render();
   });
 });
+
+function simpanDanRender() {
+  tasks.sort(function(a, b) {
+    return new Date(a.deadline) - new Date(b.deadline);
+  });
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  
+  render();
+}
+
+simpanDanRender();
